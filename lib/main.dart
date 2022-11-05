@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_view/page2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,25 +34,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var url = [
+    "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",
+    "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif"
+    ];
 
     return Scaffold(
       appBar: AppBar(title: Text("Photo Show")),
       body: 
       SingleChildScrollView(
         child: Column(
-        children: [
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: Image.network("https://docs.flutter.dev/assets/images/dash/dash-fainting.gif")
-          ),
-          Container(
-            width: size.width,
+        children: List.generate(url.length, (index) {
+         return GestureDetector(
+          onTap: (){
+            NavigatorState nav = Navigator.of(context);
+            nav.push(MaterialPageRoute(builder: ((context) => Page2("title")))).then((value) => 
+            print(value)
+            );
+          },
+          child: Padding(
             padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(border: Border.all(width: 8.0)),
-            child: Image.network("https://docs.flutter.dev/assets/images/dash/dash-fainting.gif"),
-          )
-
-      ],),)
+            child: Image.network(url[index]),),
+         
+         );
+         
+        } 
+        ),
+        ),
+      )
       
     );
 

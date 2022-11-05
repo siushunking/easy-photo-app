@@ -9,6 +9,8 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text(title)),);
+    return Scaffold(appBar: AppBar(title: Text(title), leading: BackButton(onPressed: () {
+      Navigator.of(context).pop("HI");
+    },),), );
   }
 }
