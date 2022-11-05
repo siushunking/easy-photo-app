@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
          return GestureDetector(
           onTap: (){
             NavigatorState nav = Navigator.of(context);
-            nav.push(MaterialPageRoute(builder: ((context) => Page2("title")))).then((value) => 
+            nav.push(MaterialPageRoute(builder: ((context) => Page2("title", url[index])))).then((value) => 
             print(value)
             );
           },
